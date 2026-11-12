@@ -1,0 +1,631 @@
+
+/* ================================
+   NAVBAR BASE
+================================ */
+
+.navbar {
+  position: relative;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: calc(100% - 40px);
+  height: 66px;
+  margin: 14px auto;
+
+  padding: 0 24px;
+
+  border-radius: 15px;
+  background: #168ce0;
+  color: white;
+
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Background image and gradient */
+
+.navbar-background {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(9, 83, 151, 0.88),
+      rgba(11, 102, 175, 0.68),
+      rgba(4, 40, 83, 0.92)
+    ),
+    url("/navbar-bg.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ================================
+   LOGO
+================================ */
+
+.navbar-logo {
+  position: relative;
+  z-index: 5;
+
+  display: inline-flex;
+  align-items: center;
+
+  margin-left: 42px;
+
+  color: #ffffff;
+  text-decoration: none;
+
+  font-size: 23px;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+
+  white-space: nowrap;
+}
+
+.navbar-logo span {
+  color: #ffe16b;
+}
+
+/* ================================
+   NAVIGATION LINKS
+================================ */
+
+.navbar-links {
+  position: relative;
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  gap: 27px;
+
+  margin-left: auto;
+}
+
+.navbar-links a {
+  color: #ffffff;
+  text-decoration: none;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.navbar-links a:not(.navbar-cta):hover {
+  color: #ffe16b;
+}
+
+.navbar-links .navbar-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 39px;
+  padding: 0 19px;
+
+  border-radius: 9px;
+
+  background: #ffffff;
+  color: #0878c9;
+
+  font-weight: 700;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.navbar-links .navbar-cta:hover {
+  background: #ffe16b;
+  color: #163b5a;
+  transform: translateY(-2px);
+}
+
+/* ================================
+   PIKACHU CONTAINER
+================================ */
+
+.pikachu-container {
+  position: absolute;
+  top: 2px;
+  left: 105px;
+
+  z-index: 4;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 76px;
+  height: 62px;
+
+  padding: 0;
+  border: 0;
+  outline: none;
+
+  background: transparent;
+  cursor: pointer;
+
+  transform: translate3d(105px, 2px, 0);
+  transform-origin: center;
+
+  opacity: 1;
+  visibility: visible;
+
+  will-change: transform;
+  touch-action: manipulation;
+}
+
+/* Character scene */
+
+.pikachu-scene {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+}
+
+/* Pikachu SVG */
+
+.pikachu-art {
+  display: block;
+
+  width: 54px;
+  height: 54px;
+
+  overflow: visible;
+
+  image-rendering: pixelated;
+  transform-origin: center bottom;
+
+  filter: drop-shadow(0 3px 2px rgba(0, 0, 0, 0.18));
+}
+
+/* ================================
+   SLEEPING ANIMATION
+================================ */
+
+.pika-sleeping .pikachu-art {
+  animation: pika-sleep 2.5s ease-in-out infinite;
+}
+
+.pika-sleeping .pika-eyes {
+  display: none;
+}
+
+.pika-sleeping .pika-closed-eyes {
+  display: block;
+}
+
+.pika-running .pika-closed-eyes {
+  display: none;
+}
+
+.pika-waking .pika-closed-eyes {
+  display: none;
+}
+
+.pika-waking .pikachu-art {
+  animation: pika-wake 0.8s ease-in-out;
+}
+
+@keyframes pika-sleep {
+  0%,
+  100% {
+    transform: translateY(0) scaleY(0.97);
+  }
+
+  50% {
+    transform: translateY(2px) scaleY(1.02);
+  }
+}
+
+@keyframes pika-wake {
+  0% {
+    transform: scale(0.85) translateY(5px);
+  }
+
+  60% {
+    transform: scale(1.12) translateY(-3px);
+  }
+
+  100% {
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ================================
+   RUNNING ANIMATION
+================================ */
+
+.pika-running .pikachu-art {
+  animation: pika-idle 0.7s ease-in-out infinite;
+}
+
+.pika-running.pika-moving .pikachu-art {
+  animation: pika-run var(--stride-duration, 0.4s) ease-in-out infinite;
+}
+
+@keyframes pika-idle {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes pika-run {
+  0%,
+  100% {
+    transform: translateY(0) scaleY(0.94);
+  }
+
+  50% {
+    transform: translateY(-4px) scaleY(1.06);
+  }
+}
+
+/* Legs */
+
+.pika-moving .pika-leg-left {
+  transform-box: fill-box;
+  transform-origin: center top;
+  animation: pika-leg-left var(--stride-duration, 0.4s) ease-in-out infinite;
+}
+
+.pika-moving .pika-leg-right {
+  transform-box: fill-box;
+  transform-origin: center top;
+  animation: pika-leg-right var(--stride-duration, 0.4s) ease-in-out infinite;
+}
+
+@keyframes pika-leg-left {
+  0%,
+  100% {
+    transform: rotate(20deg) translateY(-1px);
+  }
+
+  50% {
+    transform: rotate(-20deg) translateY(1px);
+  }
+}
+
+@keyframes pika-leg-right {
+  0%,
+  100% {
+    transform: rotate(-20deg) translateY(1px);
+  }
+
+  50% {
+    transform: rotate(20deg) translateY(-1px);
+  }
+}
+
+/* Arms */
+
+.pika-moving .pika-arm-left {
+  transform-box: fill-box;
+  transform-origin: center top;
+  animation: pika-arm-left var(--stride-duration, 0.4s) ease-in-out infinite;
+}
+
+.pika-moving .pika-arm-right {
+  transform-box: fill-box;
+  transform-origin: center top;
+  animation: pika-arm-right var(--stride-duration, 0.4s) ease-in-out infinite;
+}
+
+@keyframes pika-arm-left {
+  0%,
+  100% {
+    transform: rotate(-15deg);
+  }
+
+  50% {
+    transform: rotate(15deg);
+  }
+}
+
+@keyframes pika-arm-right {
+  0%,
+  100% {
+    transform: rotate(15deg);
+  }
+
+  50% {
+    transform: rotate(-15deg);
+  }
+}
+
+/* Tail */
+
+.pika-moving .pika-tail {
+  transform-box: fill-box;
+  transform-origin: bottom left;
+  animation: pika-tail 0.35s ease-in-out infinite alternate;
+}
+
+@keyframes pika-tail {
+  from {
+    transform: rotate(-8deg);
+  }
+
+  to {
+    transform: rotate(8deg);
+  }
+}
+
+/* ================================
+   SLEEP Z SYMBOLS
+================================ */
+
+.pikachu-sleep-z {
+  position: absolute;
+  top: 0;
+  right: 2px;
+
+  display: flex;
+  gap: 2px;
+
+  color: white;
+  font-size: 12px;
+  font-weight: 900;
+
+  pointer-events: none;
+}
+
+.pikachu-sleep-z span {
+  animation: sleep-z 1.8s ease-in-out infinite;
+}
+
+.pikachu-sleep-z span:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.pikachu-sleep-z span:nth-child(3) {
+  animation-delay: 0.8s;
+}
+
+@keyframes sleep-z {
+  0% {
+    opacity: 0;
+    transform: translateY(5px) scale(0.7);
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-13px) scale(1.1);
+  }
+}
+
+/* ================================
+   SHOPPING CART
+================================ */
+
+.navbar-cart {
+  position: relative;
+  z-index: 15;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+  margin-left: 12px;
+
+  color: #ffffff;
+  text-decoration: none;
+
+  border-radius: 9px;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.navbar-cart:hover {
+  background: rgba(255, 255, 255, 0.16);
+  transform: translateY(-2px);
+}
+
+.cart-count {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 17px;
+  height: 17px;
+
+  padding: 0 4px;
+
+  border: 2px solid #168ce0;
+  border-radius: 20px;
+
+  background: #ff4242;
+  color: white;
+
+  font-size: 10px;
+  font-weight: 700;
+}
+
+/* ================================
+   MOBILE NAVBAR
+================================ */
+
+@media (max-width: 650px) {
+  .navbar {
+    width: calc(100% - 20px);
+    height: 62px;
+
+    margin: 10px auto;
+    padding: 0 12px;
+
+    overflow: visible;
+    border-radius: 12px;
+  }
+
+  .navbar-logo {
+    margin-left: 36px;
+    font-size: 19px;
+  }
+
+  .pikachu-container {
+    top: 3px;
+    left: auto;
+    right: 5px;
+
+    width: 62px;
+    height: 56px;
+
+    z-index: 12;
+  }
+
+  .pikachu-art {
+    width: 48px;
+    height: 48px;
+  }
+
+  .navbar-links {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    right: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+
+    padding: 8px;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+
+    background: #075d9e;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: translateY(-8px);
+
+    transition:
+      opacity 0.2s ease,
+      visibility 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .navbar-links.mobile-menu-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .navbar-links a {
+    display: block;
+    width: 100%;
+
+    padding: 13px 14px;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+  }
+
+  .navbar-links a:not(.navbar-cta):hover {
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .navbar-links .navbar-cta {
+    justify-content: center;
+    margin-top: 5px;
+  }
+
+  .navbar-cart {
+    width: 38px;
+    height: 38px;
+
+    margin-left: auto;
+    margin-right: 65px;
+  }
+}
+
+/* ================================
+   SMALL MOBILE SCREENS
+================================ */
+
+@media (max-width: 420px) {
+  .navbar {
+    width: calc(100% - 14px);
+    padding: 0 9px;
+  }
+
+  .navbar-logo {
+    margin-left: 30px;
+    font-size: 17px;
+  }
+
+  .navbar-cart {
+    width: 34px;
+    height: 34px;
+    margin-right: 59px;
+  }
+
+  .navbar-cart svg {
+    width: 21px;
+    height: 21px;
+  }
+
+  .pikachu-container {
+    right: 2px;
+    width: 58px;
+  }
+}
+
+/* ================================
+   REDUCED MOTION ACCESSIBILITY
+================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .pikachu-art,
+  .pika-moving .pika-leg-left,
+  .pika-moving .pika-leg-right,
+  .pika-moving .pika-arm-left,
+  .pika-moving .pika-arm-right,
+  .pika-moving .pika-tail,
+  .pikachu-sleep-z span {
+    animation-duration: 2s !important;
+  }
+
+  .navbar-links,
+  .navbar-cart {
+    transition: none;
+  }
+}

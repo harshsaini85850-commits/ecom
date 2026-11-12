@@ -1,0 +1,283 @@
+
+.hero3-section {
+  position: relative;
+  height: 260vh;
+  background: #f5f3ef;
+  color: #171717;
+  overflow: clip;
+}
+
+.hero3-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  min-height: 650px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  perspective: 1200px;
+}
+
+.hero3-heading {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  padding: 35px 20px 20px;
+}
+
+.hero3-eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 4px;
+  font-weight: 700;
+  color: #888;
+  margin-bottom: 15px;
+}
+
+.hero3-heading h2 {
+  font-size: clamp(36px, 5vw, 68px);
+  line-height: 1;
+  letter-spacing: -3px;
+  font-weight: 800;
+  margin: 0;
+}
+
+.hero3-heading h2 span {
+  color: #168ce0;
+}
+
+.hero3-heading p {
+  color: #777;
+  font-size: 14px;
+  margin-top: 15px;
+}
+
+.hero3-products-window {
+  width: 100%;
+  overflow: visible;
+  margin-top: 35px;
+}
+
+.hero3-track {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+  width: max-content;
+  padding-left: calc(50vw - 170px);
+  padding-right: calc(50vw - 170px);
+  will-change: transform;
+}
+
+.hero3-product {
+  width: 340px;
+  flex: 0 0 340px;
+  transform-origin: center center;
+  transition: opacity 0.15s linear;
+  will-change: transform, opacity;
+  position: relative;
+}
+
+.hero3-product-image {
+  height: 390px;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero3-product-image img {
+  height: 100%;
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.hero3-product:hover .hero3-product-image img {
+  transform: scale(1.06);
+}
+
+.hero3-product-number {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  color: #fff;
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  text-shadow: 0 1px 8px #0005;
+}
+
+.hero3-product-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 18px 2px;
+}
+
+.hero3-category {
+  color: #999;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.hero3-product-info h3 {
+  font-size: 19px;
+  font-weight: 700;
+  margin: 5px 0 0;
+}
+
+.hero3-price {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.hero3-bottom {
+  position: absolute;
+  bottom: 35px;
+  left: 7%;
+  right: 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #888;
+}
+
+.hero3-scroll-line {
+  height: 2px;
+  background: #d6d3ce;
+  flex: 1;
+  max-width: 250px;
+  overflow: hidden;
+}
+
+.hero3-scroll-line span {
+  display: block;
+  width: 35%;
+  height: 100%;
+  background: #168ce0;
+  animation: hero3-progress 2s ease-in-out infinite alternate;
+}
+
+@keyframes hero3-progress {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(185%);
+  }
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .hero3-section {
+    height: 230vh;
+  }
+
+  .hero3-sticky {
+    min-height: 600px;
+  }
+
+  .hero3-product {
+    width: 290px;
+    flex-basis: 290px;
+  }
+
+  .hero3-product-image {
+    height: 340px;
+  }
+
+  .hero3-track {
+    padding-left: calc(50vw - 145px);
+    padding-right: calc(50vw - 145px);
+    gap: 25px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .hero3-section {
+    height: 210vh;
+  }
+
+  .hero3-sticky {
+    min-height: 580px;
+    height: 100svh;
+  }
+
+  .hero3-heading {
+    padding: 20px 15px 10px;
+  }
+
+  .hero3-eyebrow {
+    font-size: 9px;
+    letter-spacing: 3px;
+  }
+
+  .hero3-heading h2 {
+    font-size: 37px;
+    letter-spacing: -1.8px;
+  }
+
+  .hero3-heading p {
+    max-width: 290px;
+    margin: 12px auto 0;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .hero3-products-window {
+    margin-top: 30px;
+  }
+
+  .hero3-product {
+    width: 250px;
+    flex-basis: 250px;
+  }
+
+  .hero3-product-image {
+    height: 300px;
+  }
+
+  .hero3-track {
+    padding-left: calc(50vw - 125px);
+    padding-right: calc(50vw - 125px);
+    gap: 20px;
+  }
+
+  .hero3-product-info h3 {
+    font-size: 16px;
+  }
+
+  .hero3-category {
+    font-size: 8px;
+  }
+
+  .hero3-price {
+    font-size: 14px;
+  }
+
+  .hero3-bottom {
+    bottom: 20px;
+    left: 5%;
+    right: 5%;
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero3-scroll-line span {
+    animation: none;
+  }
+
+  .hero3-product-image img {
+    transition: none;
+  }
+}
